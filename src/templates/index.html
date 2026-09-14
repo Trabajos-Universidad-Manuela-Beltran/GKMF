@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GKMF — Garantía de Conocimiento y Movilidad Financiera</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/variables.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/screens.css">
+</head>
+<body>
+
+<div class="phone" role="application" aria-label="GKMF — Aplicación de inclusión financiera">
+
+  <!-- ═══════════════════════════════════════════════
+       SPLASH
+  ═══════════════════════════════════════════════ -->
+  <section id="splash" class="screen active" aria-label="Pantalla de carga GKMF">
+    <div class="splash-logo">
+      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M26 44V28" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path d="M26 28C26 28 18 24 18 14C18 14 26 10 34 14C34 14 34 22 26 28Z" fill="rgba(255,255,255,0.9)"/>
+        <path d="M26 34C26 34 20 30 16 34" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="26" cy="46" r="2" fill="rgba(255,255,255,0.5)"/>
+      </svg>
+    </div>
+    <h1 class="splash-name">GKMF</h1>
+    <p class="splash-tagline">Ahorra, aprende y crece con tu dinero</p>
+    <div class="splash-loader" role="progressbar" aria-label="Cargando aplicación" aria-valuemin="0" aria-valuemax="100">
+      <div class="splash-loader-fill"></div>
+    </div>
+    <p class="splash-caption">Cargando...</p>
+    <p class="splash-footer">Garantía de Conocimiento y Movilidad Financiera</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       DASHBOARD
+  ═══════════════════════════════════════════════ -->
+  <section id="dashboard" class="screen" aria-label="Inicio — Panel principal">
+
+    <header class="dash-header">
+      <div class="dash-greeting">
+        <small>Buenos días,</small>
+        <strong>Katherin Johana</strong>
+      </div>
+      <button class="avatar" aria-label="Ver perfil de usuario" type="button">KJ</button>
+    </header>
+
+    <div class="scroll-content">
+
+      <!-- Balance -->
+      <div class="balance-card" role="region" aria-label="Balance de ahorro">
+        <p class="balance-label">Ahorro total acumulado</p>
+        <p class="balance-amount">$247.500 <span>COP</span></p>
+        <div class="balance-divider" aria-hidden="true"></div>
+        <div class="balance-stats">
+          <div class="balance-stat">
+            <p class="balance-stat-label">Este mes</p>
+            <p class="balance-stat-value">+$32.000</p>
+          </div>
+          <div class="balance-stat">
+            <p class="balance-stat-label">Metas activas</p>
+            <p class="balance-stat-value">3</p>
+          </div>
+          <div class="balance-stat">
+            <p class="balance-stat-label">Lecciones</p>
+            <p class="balance-stat-value">7</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mis Metas -->
+      <div class="section" role="region" aria-label="Resumen de metas de ahorro">
+        <div class="section-header">
+          <h2 class="section-title">Mis metas</h2>
+          <button class="section-action" type="button" onclick="showScreen('savings')" aria-label="Ver todas las metas">Ver todas →</button>
+        </div>
+        <div class="goals-scroll" role="list">
+
+          <!-- Meta 1 -->
+          <article class="goal-card card" role="listitem" aria-label="Meta: Mercado del mes, 72% completado">
+            <div class="goal-icon icon-box icon-box--sm" style="background:#DCFCE7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2m12-2l2 2M9 21a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
+              </svg>
+            </div>
+            <p class="goal-name">Mercado del mes</p>
+            <p class="goal-amount">$72.000 / $100.000</p>
+            <div class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="72% completado">
+              <div class="progress-fill" style="width:72%"></div>
+            </div>
+            <p class="goal-pct">72% completado</p>
+          </article>
+
+          <!-- Meta 2 -->
+          <article class="goal-card card" role="listitem" aria-label="Meta: Útiles del colegio, 42% completado">
+            <div class="goal-icon icon-box icon-box--sm" style="background:#DBEAFE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <p class="goal-name">Útiles del colegio</p>
+            <p class="goal-amount">$85.000 / $200.000</p>
+            <div class="progress-bar" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" aria-label="42% completado">
+              <div class="progress-fill" style="width:42%"></div>
+            </div>
+            <p class="goal-pct">42% completado</p>
+          </article>
+
+          <!-- Meta 3 -->
+          <article class="goal-card card" role="listitem" aria-label="Meta: Fondo de emergencia, 18% completado">
+            <div class="goal-icon icon-box icon-box--sm" style="background:#FEE2E2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <p class="goal-name">Fondo emergencia</p>
+            <p class="goal-amount">$45.000 / $250.000</p>
+            <div class="progress-bar" role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100" aria-label="18% completado">
+              <div class="progress-fill" style="width:18%"></div>
+            </div>
+            <p class="goal-pct">18% completado</p>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Accesos rápidos -->
+      <div class="section" role="region" aria-label="Accesos rápidos">
+        <div class="section-header">
+          <h2 class="section-title">Accesos rápidos</h2>
+        </div>
+        <div class="quick-grid">
+
+          <button class="quick-item card" type="button" touch-action="manipulation" aria-label="Registrar gasto">
+            <div class="icon-box icon-box--md" style="background:#DCFCE7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 4v16m8-8H4"/>
+              </svg>
+            </div>
+            <span class="quick-label">Registrar gasto</span>
+          </button>
+
+          <button class="quick-item card" type="button" aria-label="Abonar a meta de ahorro">
+            <div class="icon-box icon-box--md" style="background:#FEF3C7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"/>
+              </svg>
+            </div>
+            <span class="quick-label">Abonar a meta</span>
+          </button>
+
+          <button class="quick-item card" type="button" aria-label="Ver historial de movimientos">
+            <div class="icon-box icon-box--md" style="background:#DBEAFE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <span class="quick-label">Ver movimientos</span>
+          </button>
+
+          <button class="quick-item card" type="button" onclick="showScreen('education')" aria-label="Ir a educación financiera">
+            <div class="icon-box icon-box--md" style="background:#EDE9FE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+              </svg>
+            </div>
+            <span class="quick-label">Aprender hoy</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Últimos movimientos -->
+      <div class="section" role="region" aria-label="Últimos movimientos">
+        <div class="section-header">
+          <h2 class="section-title">Últimos movimientos</h2>
+          <button class="section-action" type="button">Ver historial</button>
+        </div>
+
+        <div role="list">
+          <div class="tx-item" role="listitem">
+            <div class="icon-box icon-box--md" style="background:#FEF3C7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2m12-2l2 2M9 21a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
+              </svg>
+            </div>
+            <div class="tx-info">
+              <p class="tx-name">Mercado La Esperanza</p>
+              <p class="tx-date">Hoy, 10:32 a.m.</p>
+            </div>
+            <span class="tx-amount tx-amount--negative" aria-label="Egreso de 47 mil pesos">−$47.000</span>
+          </div>
+
+          <div class="tx-item" role="listitem">
+            <div class="icon-box icon-box--md" style="background:#DCFCE7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"/>
+              </svg>
+            </div>
+            <div class="tx-info">
+              <p class="tx-name">Abono a meta Mercado</p>
+              <p class="tx-date">Ayer, 8:15 p.m.</p>
+            </div>
+            <span class="tx-amount tx-amount--positive" aria-label="Ingreso de 20 mil pesos">+$20.000</span>
+          </div>
+
+          <div class="tx-item" role="listitem">
+            <div class="icon-box icon-box--md" style="background:#DBEAFE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </div>
+            <div class="tx-info">
+              <p class="tx-name">Bus SITP</p>
+              <p class="tx-date">Ayer, 7:50 a.m.</p>
+            </div>
+            <span class="tx-amount tx-amount--negative" aria-label="Egreso de 2 mil 950 pesos">−$2.950</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /scroll-content -->
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-item active" type="button" onclick="showScreen('dashboard')" aria-label="Inicio" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span class="nav-label">Inicio</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+        </svg>
+        <span class="nav-label">Metas</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" onclick="showScreen('education')" aria-label="Educación financiera">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
+        <span class="nav-label">Aprender</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" aria-label="Perfil de usuario">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        <span class="nav-label">Perfil</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+    </nav>
+
+  </section><!-- /dashboard -->
+
+  <!-- ═══════════════════════════════════════════════
+       SAVINGS — Mis Metas
+  ═══════════════════════════════════════════════ -->
+  <section id="savings" class="screen" aria-label="Mis metas de ahorro">
+
+    <header class="screen-header">
+      <button class="btn-back" type="button" onclick="showScreen('dashboard')" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <h1 class="screen-title">Mis Metas</h1>
+      <button class="btn-new" type="button" aria-label="Crear nueva meta de ahorro">+ Nueva</button>
+    </header>
+
+    <!-- Stats -->
+    <div class="savings-stats" role="region" aria-label="Resumen de metas">
+      <div class="savings-stat">
+        <p class="savings-stat-value">3</p>
+        <p class="savings-stat-label">Activas</p>
+      </div>
+      <div class="savings-stat">
+        <p class="savings-stat-value savings-stat-value--primary">44%</p>
+        <p class="savings-stat-label">Promedio</p>
+      </div>
+      <div class="savings-stat">
+        <p class="savings-stat-value">$202K</p>
+        <p class="savings-stat-label">Ahorrado</p>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-scroll" role="group" aria-label="Filtros de metas">
+      <button class="chip active" type="button" aria-pressed="true">Todas</button>
+      <button class="chip" type="button" aria-pressed="false">En progreso</button>
+      <button class="chip" type="button" aria-pressed="false">Completadas</button>
+      <button class="chip" type="button" aria-pressed="false">Pausadas</button>
+    </div>
+
+    <div class="scroll-content" style="padding-top:0">
+      <div class="savings-list" role="list">
+
+        <!-- Meta 1 -->
+        <article class="savings-card card" role="listitem" aria-label="Meta: Mercado del mes">
+          <div class="savings-card-header">
+            <div class="icon-box icon-box--lg" style="background:#DCFCE7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2m12-2l2 2M9 21a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
+              </svg>
+            </div>
+            <div class="savings-card-info">
+              <h3 class="savings-card-name">Mercado del mes</h3>
+              <p class="savings-card-desc">Alimentación familiar mensual</p>
+            </div>
+            <button class="savings-card-menu" type="button" aria-label="Opciones de la meta Mercado del mes">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/>
+              </svg>
+            </button>
+          </div>
+          <div class="savings-progress-row">
+            <span class="savings-progress-saved">$72.000</span>
+            <span class="savings-progress-total">de $100.000</span>
+          </div>
+          <div class="progress-bar progress-bar--lg" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="72% completado">
+            <div class="progress-fill" style="width:72%"></div>
+          </div>
+          <p class="savings-pct">72% completado</p>
+          <div class="savings-card-footer">
+            <span class="savings-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+              30 oct 2026
+            </span>
+            <span class="status-chip status-chip--active">En progreso</span>
+          </div>
+        </article>
+
+        <!-- Meta 2 -->
+        <article class="savings-card card" role="listitem" aria-label="Meta: Útiles del colegio">
+          <div class="savings-card-header">
+            <div class="icon-box icon-box--lg" style="background:#DBEAFE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <div class="savings-card-info">
+              <h3 class="savings-card-name">Útiles del colegio</h3>
+              <p class="savings-card-desc">Materiales para el semestre</p>
+            </div>
+            <button class="savings-card-menu" type="button" aria-label="Opciones de la meta Útiles del colegio">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/>
+              </svg>
+            </button>
+          </div>
+          <div class="savings-progress-row">
+            <span class="savings-progress-saved">$85.000</span>
+            <span class="savings-progress-total">de $200.000</span>
+          </div>
+          <div class="progress-bar progress-bar--lg" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" aria-label="42% completado">
+            <div class="progress-fill" style="width:42%"></div>
+          </div>
+          <p class="savings-pct">42% completado</p>
+          <div class="savings-card-footer">
+            <span class="savings-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+              15 dic 2026
+            </span>
+            <span class="status-chip status-chip--active">En progreso</span>
+          </div>
+        </article>
+
+        <!-- Meta 3 -->
+        <article class="savings-card card" role="listitem" aria-label="Meta: Fondo de emergencia, estado: Atrasada">
+          <div class="savings-card-header">
+            <div class="icon-box icon-box--lg" style="background:#FEE2E2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div class="savings-card-info">
+              <h3 class="savings-card-name">Fondo de emergencia</h3>
+              <p class="savings-card-desc">Reserva para imprevistos</p>
+            </div>
+            <button class="savings-card-menu" type="button" aria-label="Opciones de la meta Fondo de emergencia">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/>
+              </svg>
+            </button>
+          </div>
+          <div class="savings-progress-row">
+            <span class="savings-progress-saved">$45.000</span>
+            <span class="savings-progress-total">de $250.000</span>
+          </div>
+          <div class="progress-bar progress-bar--lg" role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100" aria-label="18% completado">
+            <div class="progress-fill progress-fill--warning" style="width:18%"></div>
+          </div>
+          <p class="savings-pct">18% completado</p>
+          <div class="savings-card-footer">
+            <span class="savings-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+              31 mar 2027
+            </span>
+            <span class="status-chip status-chip--warning">Atrasada</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-item" type="button" onclick="showScreen('dashboard')" aria-label="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span class="nav-label">Inicio</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item active" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+        </svg>
+        <span class="nav-label">Metas</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" onclick="showScreen('education')" aria-label="Educación financiera">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
+        <span class="nav-label">Aprender</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" aria-label="Perfil de usuario">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        <span class="nav-label">Perfil</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+    </nav>
+
+  </section><!-- /savings -->
+
+  <!-- ═══════════════════════════════════════════════
+       EDUCATION — Aprende
+  ═══════════════════════════════════════════════ -->
+  <section id="education" class="screen" aria-label="Educación financiera">
+
+    <header class="screen-header">
+      <button class="btn-back" type="button" onclick="showScreen('dashboard')" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <h1 class="screen-title">Aprende</h1>
+      <div style="width:40px" aria-hidden="true"></div>
+    </header>
+
+    <div class="scroll-content" style="padding-top:0">
+
+      <!-- Featured Lesson -->
+      <div class="featured-lesson" role="region" aria-label="Lección del día">
+        <p class="featured-tag">Lección del día</p>
+        <h2 class="featured-title">¿Qué es el ahorro programado?</h2>
+        <p class="featured-desc">Aprende a separar dinero automáticamente cada vez que recibes ingresos.</p>
+        <div class="featured-footer">
+          <span class="time-chip">⏱ 5 min</span>
+          <button class="btn-start" type="button" aria-label="Empezar lección: ¿Qué es el ahorro programado?">Empezar</button>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="section" role="region" aria-label="Categorías de educación financiera">
+        <div class="section-header">
+          <h2 class="section-title">Explorar temas</h2>
+        </div>
+        <div class="categories-grid" role="list">
+
+          <button class="category-card card" type="button" role="listitem" aria-label="Categoría Ahorro, 8 lecciones">
+            <div class="icon-box icon-box--md" style="background:#DCFCE7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 9V7a5 5 0 00-10 0v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2z"/>
+                <circle cx="12" cy="14" r="1"/>
+              </svg>
+            </div>
+            <div>
+              <p class="category-name">Ahorro</p>
+              <p class="category-count">8 lecciones</p>
+            </div>
+          </button>
+
+          <button class="category-card card" type="button" role="listitem" aria-label="Categoría Crédito, 6 lecciones">
+            <div class="icon-box icon-box--md" style="background:#FEE2E2" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/>
+              </svg>
+            </div>
+            <div>
+              <p class="category-name">Crédito</p>
+              <p class="category-count">6 lecciones</p>
+            </div>
+          </button>
+
+          <button class="category-card card" type="button" role="listitem" aria-label="Categoría Presupuesto, 5 lecciones">
+            <div class="icon-box icon-box--md" style="background:#DBEAFE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="category-name">Presupuesto</p>
+              <p class="category-count">5 lecciones</p>
+            </div>
+          </button>
+
+          <button class="category-card card" type="button" role="listitem" aria-label="Categoría Protección, 4 lecciones">
+            <div class="icon-box icon-box--md" style="background:#FEF3C7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="category-name">Protección</p>
+              <p class="category-count">4 lecciones</p>
+            </div>
+          </button>
+
+          <button class="category-card card" type="button" role="listitem" aria-label="Categoría Inversión básica, 7 lecciones">
+            <div class="icon-box icon-box--md" style="background:#EDE9FE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="category-name">Inversión</p>
+              <p class="category-count">7 lecciones</p>
+            </div>
+          </button>
+
+          <button class="category-card card" type="button" role="listitem" aria-label="Categoría Finanzas en familia, 3 lecciones">
+            <div class="icon-box icon-box--md" style="background:#F0FDF4" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <p class="category-name">Familia</p>
+              <p class="category-count">3 lecciones</p>
+            </div>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Continue Learning -->
+      <div class="section" role="region" aria-label="Lecciones en progreso">
+        <div class="section-header">
+          <h2 class="section-title">Continúa aprendiendo</h2>
+        </div>
+
+        <button class="lesson-item card" type="button" aria-label="Continuar lección: ¿Cómo hacer un presupuesto familiar?, 60% completado" style="width:100%;text-align:left">
+          <div class="lesson-thumb" style="background:#DBEAFE" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <div class="lesson-info">
+            <p class="lesson-name">¿Cómo hacer un presupuesto familiar?</p>
+            <div class="lesson-progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="60% completado">
+              <div class="lesson-progress-fill" style="width:60%"></div>
+            </div>
+            <p class="lesson-pct">60% completado</p>
+          </div>
+          <span class="lesson-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+
+        <button class="lesson-item card" type="button" aria-label="Ver lección completada: Los 3 errores más comunes con el dinero" style="width:100%;text-align:left">
+          <div class="lesson-thumb" style="background:#DCFCE7" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="lesson-info">
+            <p class="lesson-name">Los 3 errores más comunes con el dinero</p>
+            <span class="lesson-done">✓ Completada</span>
+          </div>
+          <span class="lesson-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+
+      </div>
+
+      <!-- Badges -->
+      <div class="section" style="padding-bottom:96px" role="region" aria-label="Tus logros">
+        <div class="section-header">
+          <h2 class="section-title">Tus logros</h2>
+        </div>
+        <div class="badges-scroll" role="list">
+
+          <div class="badge-item" role="listitem" aria-label="Logro obtenido: Primera meta">
+            <div class="badge-circle" style="background:#DCFCE7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <p class="badge-label">Primera meta</p>
+          </div>
+
+          <div class="badge-item" role="listitem" aria-label="Logro obtenido: 3 lecciones completadas">
+            <div class="badge-circle" style="background:#DBEAFE" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <p class="badge-label">3 lecciones</p>
+          </div>
+
+          <div class="badge-item" role="listitem" aria-label="Logro obtenido: 7 días activa">
+            <div class="badge-circle" style="background:#FEF3C7" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+              </svg>
+            </div>
+            <p class="badge-label">7 días activa</p>
+          </div>
+
+          <div class="badge-item badge-item--locked" role="listitem" aria-label="Logro bloqueado: Meta cumplida">
+            <div class="badge-circle" style="background:#F1F5F9" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <p class="badge-label">Meta cumplida</p>
+          </div>
+
+          <div class="badge-item badge-item--locked" role="listitem" aria-label="Logro bloqueado: Constancia">
+            <div class="badge-circle" style="background:#F1F5F9" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <p class="badge-label">Constancia</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /scroll-content -->
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Navegación principal">
+      <button class="nav-item" type="button" onclick="showScreen('dashboard')" aria-label="Inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span class="nav-label">Inicio</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+        </svg>
+        <span class="nav-label">Metas</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item active" type="button" onclick="showScreen('education')" aria-label="Educación financiera" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
+        <span class="nav-label">Aprender</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+      <button class="nav-item" type="button" aria-label="Perfil de usuario">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        <span class="nav-label">Perfil</span>
+        <span class="nav-dot" aria-hidden="true"></span>
+      </button>
+    </nav>
+
+  </section><!-- /education -->
+
+</div><!-- /phone -->
+
+<script src="../js/app.js"></script>
+</body>
+</html>

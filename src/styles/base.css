@@ -1,0 +1,63 @@
+/* ─── Reset ───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Root ────────────────────────────────────────── */
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography helpers ──────────────────────────── */
+h1, h2, h3 { line-height: 1.2; }
+p           { line-height: 1.5; }
+small       { font-size: var(--text-sm); }
+
+/* ─── Scrollbar hiding ────────────────────────────── */
+.scroll-content,
+.goals-scroll,
+.filter-scroll,
+.badges-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroll-content::-webkit-scrollbar,
+.goals-scroll::-webkit-scrollbar,
+.filter-scroll::-webkit-scrollbar,
+.badges-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Focus styles (WCAG AA) ──────────────────────── */
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Reduced motion ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .splash-loader-fill {
+    animation: none;
+    width: 100%;
+  }
+  .screen {
+    transition: none;
+  }
+}

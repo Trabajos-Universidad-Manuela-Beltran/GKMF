@@ -1,0 +1,79 @@
+:root {
+  /* ── Brand ─────────────────────────── */
+  --color-primary:        #16A34A;
+  --color-primary-dark:   #15803D;
+  --color-primary-darker: #166534;
+  --color-primary-light:  #22C55E;
+  --color-primary-pale:   #DCFCE7;
+
+  /* ── Accent ────────────────────────── */
+  --color-accent:       #F59E0B;
+  --color-accent-light: #FEF3C7;
+
+  /* ── Semantic ──────────────────────── */
+  --color-purple:       #7C3AED;
+  --color-purple-light: #EDE9FE;
+  --color-blue:         #1D4ED8;
+  --color-blue-light:   #DBEAFE;
+  --color-red:          #DC2626;
+  --color-red-light:    #FEE2E2;
+
+  /* ── Surface ───────────────────────── */
+  --color-bg:        #F8FAFC;
+  --color-surface:   #FFFFFF;
+  --color-surface-2: #F1F5F9;
+
+  /* ── Text ──────────────────────────── */
+  --color-text:           #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted:     #94A3B8;
+
+  /* ── Border ────────────────────────── */
+  --color-border: #E2E8F0;
+
+  /* ── Shadows ───────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-nav: 0 -4px 16px rgba(0, 0, 0, 0.06);
+
+  /* ── Radius ────────────────────────── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ── Typography ────────────────────── */
+  --font:      'IBM Plex Sans', system-ui, sans-serif;
+  --text-2xs:  10px;
+  --text-xs:   11px;
+  --text-sm:   12px;
+  --text-base: 14px;
+  --text-md:   15px;
+  --text-lg:   16px;
+  --text-xl:   18px;
+  --text-2xl:  22px;
+  --text-hero: 36px;
+
+  /* ── Spacing (8dp grid) ────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ── Z-index ───────────────────────── */
+  --z-base:    0;
+  --z-header:  10;
+  --z-nav:     100;
+  --z-overlay: 200;
+
+  /* ── Transitions ───────────────────── */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+}
