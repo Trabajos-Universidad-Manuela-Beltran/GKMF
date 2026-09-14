@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<div class="phone" role="application" aria-label="GKMF — Aplicación de inclusión financiera">
+<div class="phone" aria-label="GKMF — Aplicación de inclusión financiera">
 
   <!-- ═══════════════════════════════════════════════
        SPLASH
@@ -34,7 +34,7 @@
     </div>
     <h1 class="splash-name">GKMF</h1>
     <p class="splash-tagline">Ahorra, aprende y crece con tu dinero</p>
-    <div class="splash-loader" role="progressbar" aria-label="Cargando aplicación" aria-valuemin="0" aria-valuemax="100">
+    <div class="splash-loader" role="progressbar" aria-label="Cargando aplicación" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
       <div class="splash-loader-fill"></div>
     </div>
     <p class="splash-caption">Cargando...</p>
@@ -45,6 +45,7 @@
        DASHBOARD
   ═══════════════════════════════════════════════ -->
   <section id="dashboard" class="screen" aria-label="Inicio — Panel principal">
+    <h1 class="sr-only">Panel principal</h1>
 
     <header class="dash-header">
       <div class="dash-greeting">
@@ -83,7 +84,7 @@
           <h2 class="section-title">Mis metas</h2>
           <button class="section-action" type="button" onclick="showScreen('savings')" aria-label="Ver todas las metas">Ver todas →</button>
         </div>
-        <div class="goals-scroll" role="list">
+        <div class="goals-scroll" role="list" tabindex="0" aria-label="Desplazar con teclas de flecha">
 
           <!-- Meta 1 -->
           <article class="goal-card card" role="listitem" aria-label="Meta: Mercado del mes, 72% completado">
@@ -140,7 +141,7 @@
         </div>
         <div class="quick-grid">
 
-          <button class="quick-item card" type="button" touch-action="manipulation" aria-label="Registrar gasto">
+          <button class="quick-item card" type="button" aria-label="Registrar gasto">
             <div class="icon-box icon-box--md" style="background:#DCFCE7" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 4v16m8-8H4"/>
@@ -184,7 +185,7 @@
       <div class="section" role="region" aria-label="Últimos movimientos">
         <div class="section-header">
           <h2 class="section-title">Últimos movimientos</h2>
-          <button class="section-action" type="button">Ver historial</button>
+          <button class="section-action" type="button" aria-label="Ver historial de movimientos">Ver historial</button>
         </div>
 
         <div role="list">
@@ -231,38 +232,6 @@
 
     </div><!-- /scroll-content -->
 
-    <!-- Bottom Nav -->
-    <nav class="bottom-nav" aria-label="Navegación principal">
-      <button class="nav-item active" type="button" onclick="showScreen('dashboard')" aria-label="Inicio" aria-current="page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-        </svg>
-        <span class="nav-label">Inicio</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-        </svg>
-        <span class="nav-label">Metas</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" onclick="showScreen('education')" aria-label="Educación financiera">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-        </svg>
-        <span class="nav-label">Aprender</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" aria-label="Perfil de usuario">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-        </svg>
-        <span class="nav-label">Perfil</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-    </nav>
-
   </section><!-- /dashboard -->
 
   <!-- ═══════════════════════════════════════════════
@@ -297,7 +266,7 @@
     </div>
 
     <!-- Filters -->
-    <div class="filter-scroll" role="group" aria-label="Filtros de metas">
+    <div class="filter-scroll" role="group" aria-label="Filtros de metas" tabindex="0">
       <button class="chip active" type="button" aria-pressed="true">Todas</button>
       <button class="chip" type="button" aria-pressed="false">En progreso</button>
       <button class="chip" type="button" aria-pressed="false">Completadas</button>
@@ -311,7 +280,7 @@
         <article class="savings-card card" role="listitem" aria-label="Meta: Mercado del mes">
           <div class="savings-card-header">
             <div class="icon-box icon-box--lg" style="background:#DCFCE7" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 2m12-2l2 2M9 21a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
               </svg>
             </div>
@@ -348,7 +317,7 @@
         <article class="savings-card card" role="listitem" aria-label="Meta: Útiles del colegio">
           <div class="savings-card-header">
             <div class="icon-box icon-box--lg" style="background:#DBEAFE" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
               </svg>
             </div>
@@ -385,7 +354,7 @@
         <article class="savings-card card" role="listitem" aria-label="Meta: Fondo de emergencia, estado: Atrasada">
           <div class="savings-card-header">
             <div class="icon-box icon-box--lg" style="background:#FEE2E2" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
               </svg>
             </div>
@@ -421,38 +390,6 @@
       </div>
     </div>
 
-    <!-- Bottom Nav -->
-    <nav class="bottom-nav" aria-label="Navegación principal">
-      <button class="nav-item" type="button" onclick="showScreen('dashboard')" aria-label="Inicio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-        </svg>
-        <span class="nav-label">Inicio</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item active" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro" aria-current="page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-        </svg>
-        <span class="nav-label">Metas</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" onclick="showScreen('education')" aria-label="Educación financiera">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-        </svg>
-        <span class="nav-label">Aprender</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" aria-label="Perfil de usuario">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-        </svg>
-        <span class="nav-label">Perfil</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-    </nav>
-
   </section><!-- /savings -->
 
   <!-- ═══════════════════════════════════════════════
@@ -460,14 +397,13 @@
   ═══════════════════════════════════════════════ -->
   <section id="education" class="screen" aria-label="Educación financiera">
 
-    <header class="screen-header">
+    <header class="screen-header screen-header--no-action">
       <button class="btn-back" type="button" onclick="showScreen('dashboard')" aria-label="Volver al inicio">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M15 19l-7-7 7-7"/>
         </svg>
       </button>
       <h1 class="screen-title">Aprende</h1>
-      <div style="width:40px" aria-hidden="true"></div>
     </header>
 
     <div class="scroll-content" style="padding-top:0">
@@ -478,7 +414,10 @@
         <h2 class="featured-title">¿Qué es el ahorro programado?</h2>
         <p class="featured-desc">Aprende a separar dinero automáticamente cada vez que recibes ingresos.</p>
         <div class="featured-footer">
-          <span class="time-chip">⏱ 5 min</span>
+          <span class="time-chip">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            5 min
+          </span>
           <button class="btn-start" type="button" aria-label="Empezar lección: ¿Qué es el ahorro programado?">Empezar</button>
         </div>
       </div>
@@ -617,7 +556,7 @@
         <div class="section-header">
           <h2 class="section-title">Tus logros</h2>
         </div>
-        <div class="badges-scroll" role="list">
+        <div class="badges-scroll" role="list" tabindex="0" aria-label="Desplazar con teclas de flecha">
 
           <div class="badge-item" role="listitem" aria-label="Logro obtenido: Primera meta">
             <div class="badge-circle" style="background:#DCFCE7" aria-hidden="true">
@@ -669,39 +608,41 @@
 
     </div><!-- /scroll-content -->
 
-    <!-- Bottom Nav -->
-    <nav class="bottom-nav" aria-label="Navegación principal">
-      <button class="nav-item" type="button" onclick="showScreen('dashboard')" aria-label="Inicio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-        </svg>
-        <span class="nav-label">Inicio</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-        </svg>
-        <span class="nav-label">Metas</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item active" type="button" onclick="showScreen('education')" aria-label="Educación financiera" aria-current="page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-        </svg>
-        <span class="nav-label">Aprender</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-      <button class="nav-item" type="button" aria-label="Perfil de usuario">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-        </svg>
-        <span class="nav-label">Perfil</span>
-        <span class="nav-dot" aria-hidden="true"></span>
-      </button>
-    </nav>
-
   </section><!-- /education -->
+
+  <!-- ═══════════════════════════════════════════════
+       NAVEGACIÓN INFERIOR COMPARTIDA
+  ═══════════════════════════════════════════════ -->
+  <nav class="bottom-nav" id="main-nav" aria-label="Navegación principal" hidden>
+    <button class="nav-item" type="button" onclick="showScreen('dashboard')" aria-label="Inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+      </svg>
+      <span class="nav-label">Inicio</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </button>
+    <button class="nav-item" type="button" onclick="showScreen('savings')" aria-label="Mis metas de ahorro">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+      </svg>
+      <span class="nav-label">Metas</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </button>
+    <button class="nav-item" type="button" onclick="showScreen('education')" aria-label="Educación financiera">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+      </svg>
+      <span class="nav-label">Aprender</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </button>
+    <button class="nav-item" type="button" aria-label="Perfil de usuario">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+      </svg>
+      <span class="nav-label">Perfil</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </button>
+  </nav>
 
 </div><!-- /phone -->
 

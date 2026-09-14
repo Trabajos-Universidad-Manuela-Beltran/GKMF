@@ -105,19 +105,24 @@
 .screen-header {
   background: var(--color-surface);
   padding: 52px var(--space-4) var(--space-4);
-  display: flex;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-3);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
 }
 
+.screen-header--no-action {
+  grid-template-columns: 40px 1fr;
+}
+
 .screen-title {
   font-size: var(--text-xl);
   font-weight: 700;
   color: var(--color-text);
+  text-align: center;
 }
 
 .btn-back {
@@ -180,7 +185,11 @@
   cursor: pointer;
   border: none;
   background: none;
-  padding: var(--space-1);
+  padding: var(--space-2) var(--space-2);
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
   touch-action: manipulation;
 }
 
@@ -286,8 +295,6 @@
   gap: var(--space-3);
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
-  cursor: pointer;
-  touch-action: manipulation;
 }
 
 .tx-item:last-child { border-bottom: none; }

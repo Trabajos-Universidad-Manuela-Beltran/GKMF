@@ -51,13 +51,26 @@ button:focus-visible,
   border-radius: var(--radius-sm);
 }
 
+/* ─── Visually hidden (screen-reader only) ────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ─── Reduced motion ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .splash-loader-fill {
-    animation: none;
-    width: 100%;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
-  .screen {
-    transition: none;
+  .splash-loader-fill {
+    width: 100%;
   }
 }
