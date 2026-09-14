@@ -3,7 +3,7 @@
 
   var SPLASH_DURATION_MS = 2700;
 
-  var NAV_INDEX = { dashboard: 0, savings: 1, education: 2 };
+  var NAV_INDEX = { dashboard: 0, savings: 1, education: 2, profile: 3 };
 
   function showScreen(name) {
     document.querySelectorAll('.screen').forEach(function (s) {
