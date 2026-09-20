@@ -1,0 +1,36 @@
+# --- Secretos y configuración local (NUNCA versionar) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+# --- Respaldos y archivos de bases de datos (pueden contener datos personales y financieros reales) ---
+*.bak
+*.bacpac
+*.mdf
+*.ldf
+*.ndf
+*.sqlite
+*.sqlite3
+*.db
+
+# --- Dependencias y artefactos de compilación ---
+node_modules/
+backend/dist/
+backend/coverage/
+*.tsbuildinfo
+
+# --- Registros y temporales ---
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# --- Editores ---
+.vscode/
+.idea/
+
+# --- Claude Code (configuración local) ---
+.claude/

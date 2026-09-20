@@ -1,0 +1,9 @@
+# Normaliza finales de línea; los scripts de shell y el Dockerfile deben ser LF
+# para ejecutarse en contenedores Linux aunque se clonen en Windows.
+* text=auto
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.sql text
+*.png binary
+*.pdf binary
+*.docx binary
