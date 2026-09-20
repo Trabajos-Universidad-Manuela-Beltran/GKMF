@@ -1,0 +1,74 @@
+# ============================================================================
+# GKMF - Entorno de desarrollo reproducible
+#
+#   docker compose up -d db db-init          -> SQL Server + esquema + datos iniciales
+#   docker compose --profile api up -d --build -> además, la API en http://localhost:3000
+#
+# Requiere un archivo ".env" en esta carpeta (copie ".env.example"). Nunca se versiona.
+# ============================================================================
+name: gkmf
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer # edición gratuita, solo para desarrollo y pruebas
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:?Defina MSSQL_SA_PASSWORD en el archivo .env}
+      SQLCMDPASSWORD: ${MSSQL_SA_PASSWORD} # sqlcmd la lee del entorno: la clave no aparece en la lista de procesos
+    ports:
+      # Solo accesible desde esta máquina (no se expone a la red).
+      - "127.0.0.1:${DB_HOST_PORT:-1433}:1433"
+    volumes:
+      - gkmf-datos:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -Q 'SELECT 1' > /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    restart: unless-stopped
+
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SQLCMDPASSWORD: ${MSSQL_SA_PASSWORD:?Defina MSSQL_SA_PASSWORD en el archivo .env}
+      GKMF_API_PASSWORD: ${GKMF_API_PASSWORD:-}
+    volumes:
+      - ./database:/scripts:ro
+    entrypoint: ["/bin/bash", "/scripts/docker/inicializar.sh"]
+    restart: "no"
+
+  api:
+    profiles: ["api"]
+    build:
+      context: ./backend
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+    environment:
+      NODE_ENV: development # en desarrollo se acepta el certificado autofirmado del contenedor
+      HOST: 0.0.0.0 # dentro del contenedor; la publicación de puertos sigue limitada a localhost
+      PORT: "3000"
+      DB_SERVER: db
+      DB_NAME: GKMF
+      DB_USER: gkmf_api
+      DB_PASSWORD: ${GKMF_API_PASSWORD:?Defina GKMF_API_PASSWORD en el archivo .env para usar la API}
+      DB_TRUST_SERVER_CERTIFICATE: "true"
+      JWT_SECRET: ${JWT_SECRET:?Defina JWT_SECRET en el archivo .env para usar la API}
+    ports:
+      - "127.0.0.1:${API_HOST_PORT:-3000}:3000"
+    init: true
+    read_only: true
+    mem_limit: 512m # cada hash scrypt usa 64 MiB: se acota la memoria para que un abuso no tumbe el equipo
+    pids_limit: 200
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+volumes:
+  gkmf-datos:
