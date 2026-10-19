@@ -25,6 +25,23 @@ const sinCache: RequestHandler = (_req, res, next) => {
 };
 
 /**
+ * Limitador propio de los endpoints públicos de autenticación (registro, inicio de sesión, renovación): son los que
+ * un atacante usaría para adivinar contraseñas o agotar la CPU (cada hash scrypt es costoso), por eso su tope es
+ * mucho más bajo que el general. Se crea por aplicación para que cada instancia (y cada prueba) tenga su propio contador.
+ */
+export function crearLimitadorAutenticacion(entorno: Pick<Entorno, 'AUTH_RATE_LIMIT_WINDOW_MS' | 'AUTH_RATE_LIMIT_MAX'>): RequestHandler {
+  return rateLimit({
+    windowMs: entorno.AUTH_RATE_LIMIT_WINDOW_MS,
+    limit: entorno.AUTH_RATE_LIMIT_MAX,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
+    handler: (_req, _res, next) => {
+      next(new ErrorAplicacion(429, 'DEMASIADOS_INTENTOS', 'Demasiados intentos de autenticación. Intente de nuevo más tarde.'));
+    },
+  });
+}
+
+/**
  * Configura las defensas transversales de la API (OWASP API Security Top 10, A08:
  * configuración incorrecta de seguridad): cabeceras seguras, CORS con lista blanca,
  * limitador de solicitudes y no divulgación de la tecnología del servidor.

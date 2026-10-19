@@ -109,3 +109,33 @@ describe('cargarEntorno', () => {
     });
   });
 });
+
+describe('configuración de cuentas y sesiones', () => {
+  it('aplica valores por defecto conservadores', () => {
+    const entorno = crearEntornoPrueba();
+    expect(entorno.REFRESH_TTL_DAYS).toBe(7);
+    expect(entorno.LOGIN_MAX_ATTEMPTS).toBe(5);
+    expect(entorno.LOGIN_LOCK_MINUTES).toBe(15);
+    expect(entorno.AUTH_RATE_LIMIT_WINDOW_MS).toBe(15 * 60 * 1000);
+    expect(entorno.AUTH_RATE_LIMIT_MAX).toBe(20);
+  });
+
+  it('convierte los textos a números', () => {
+    const entorno = crearEntornoPrueba({ REFRESH_TTL_DAYS: '14', LOGIN_MAX_ATTEMPTS: '3', LOGIN_LOCK_MINUTES: '30', AUTH_RATE_LIMIT_MAX: '50' });
+    expect(entorno.REFRESH_TTL_DAYS).toBe(14);
+    expect(entorno.LOGIN_MAX_ATTEMPTS).toBe(3);
+    expect(entorno.LOGIN_LOCK_MINUTES).toBe(30);
+    expect(entorno.AUTH_RATE_LIMIT_MAX).toBe(50);
+  });
+
+  it.each([
+    ['REFRESH_TTL_DAYS', '0'],
+    ['REFRESH_TTL_DAYS', '91'],
+    ['LOGIN_MAX_ATTEMPTS', '2'],
+    ['LOGIN_MAX_ATTEMPTS', '11'],
+    ['LOGIN_LOCK_MINUTES', '0'],
+    ['AUTH_RATE_LIMIT_MAX', '0'],
+  ])('rechaza %s = %s (fuera de un rango seguro)', (nombre, valor) => {
+    expect(() => crearEntornoPrueba({ [nombre]: valor })).toThrow(ErrorConfiguracion);
+  });
+});

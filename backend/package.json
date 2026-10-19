@@ -1,8 +1,8 @@
 {
   "name": "gkmf-backend",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "API REST de GKMF (Garantía de Conocimiento y Movilidad Financiera). Estructura inicial del backend - Fase II.",
+  "description": "API REST de GKMF (Garantía de Conocimiento y Movilidad Financiera). Cuentas y metas de ahorro con operaciones ACID - Fase III.",
   "license": "MIT",
   "type": "module",
   "engines": {
@@ -17,6 +17,7 @@
     "test": "vitest run",
     "test:cov": "vitest run --coverage",
     "test:integracion": "node --env-file=.env node_modules/vitest/vitest.mjs run --config vitest.integracion.config.ts",
+    "test:integracion:cov": "node --env-file=.env node_modules/vitest/vitest.mjs run --coverage --config vitest.integracion.config.ts",
     "token:dev": "tsx --env-file=.env scripts/token-dev.ts",
     "audit:prod": "npm audit --omit=dev --audit-level=high"
   },

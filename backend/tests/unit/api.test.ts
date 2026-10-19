@@ -8,7 +8,7 @@ import { ErrorAplicacion } from '../../src/middlewares/errores.js';
 import type { ServicioEducacion } from '../../src/modulos/educacion/educacion.servicio.js';
 import { crearServicioTokens } from '../../src/seguridad/tokens.js';
 import { crearLogger } from '../../src/utilidades/logger.js';
-import { crearEntornoPrueba } from './apoyo.js';
+import { crearEntornoPrueba, crearServicioCuentasFalso, crearServicioMetasFalso } from './apoyo.js';
 
 const ENTORNO_ORIGEN = 'https://app.gkmf.test';
 
@@ -41,6 +41,8 @@ function crearAppPrueba(
     verificarBaseDeDatos: async () => true,
     verificarToken: (token) => tokens.verificar(token),
     servicioEducacion: servicio,
+    servicioCuentas: crearServicioCuentasFalso(),
+    servicioMetas: crearServicioMetasFalso(),
     ...sobrescribir,
   });
   return { app, servicio, entorno };

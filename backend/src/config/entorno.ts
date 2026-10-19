@@ -56,6 +56,16 @@ const esquemaEntorno = z
     JWT_ISSUER: z.string().min(1).default('gkmf-api'),
     JWT_AUDIENCE: z.string().min(1).default('gkmf-app'),
     JWT_ACCESS_TTL_SECONDS: z.coerce.number().int().min(60).max(3600).default(900),
+
+    // Cuentas y sesiones
+    /** Vida del token de refresco: tras este plazo hay que volver a iniciar sesión. */
+    REFRESH_TTL_DAYS: z.coerce.number().int().min(1).max(90).default(7),
+    /** Intentos fallidos consecutivos que bloquean la cuenta temporalmente (CU-18). */
+    LOGIN_MAX_ATTEMPTS: z.coerce.number().int().min(3).max(10).default(5),
+    LOGIN_LOCK_MINUTES: z.coerce.number().int().min(1).max(1440).default(15),
+    /** Limitador propio de registro, inicio de sesión y renovación, más estricto que el general. */
+    AUTH_RATE_LIMIT_WINDOW_MS: z.coerce.number().int().min(1000).default(15 * 60 * 1000),
+    AUTH_RATE_LIMIT_MAX: z.coerce.number().int().min(1).default(20),
   })
   .superRefine((entorno, contexto) => {
     // Cada origen CORS debe ser un origen exacto (esquema://host[:puerto]); nunca "*".
