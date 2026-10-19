@@ -3,6 +3,7 @@
 #
 #   docker compose up -d db db-init          -> SQL Server + esquema + datos iniciales
 #   docker compose --profile api up -d --build -> además, la API en http://localhost:3000
+#   docker compose --profile api --profile web up -d --build -> además, la interfaz en http://localhost:8080
 #
 # Requiere un archivo ".env" en esta carpeta (copie ".env.example"). Nunca se versiona.
 # ============================================================================
@@ -59,12 +60,34 @@ services:
       DB_PASSWORD: ${GKMF_API_PASSWORD:?Defina GKMF_API_PASSWORD en el archivo .env para usar la API}
       DB_TRUST_SERVER_CERTIFICATE: "true"
       JWT_SECRET: ${JWT_SECRET:?Defina JWT_SECRET en el archivo .env para usar la API}
+      CORS_ORIGINS: http://localhost:${WEB_HOST_PORT:-8080} # origen exacto de la interfaz web de desarrollo (perfil "web")
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-300} # solicitudes por IP y ventana (todas las rutas); súbalo solo para mediciones de rendimiento
+      AUTH_RATE_LIMIT_MAX: ${AUTH_RATE_LIMIT_MAX:-20} # solicitudes de registro/inicio de sesión por IP y ventana; súbalo solo para pruebas repetidas
     ports:
       - "127.0.0.1:${API_HOST_PORT:-3000}:3000"
     init: true
     read_only: true
     mem_limit: 512m # cada hash scrypt usa 64 MiB: se acota la memoria para que un abuso no tumbe el equipo
     pids_limit: 200
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+
+  # Interfaz web de desarrollo: sirve src/ (HTML, CSS y JS del prototipo conectado a la API) en http://localhost:8080
+  web:
+    profiles: ["web"]
+    image: nginxinc/nginx-unprivileged:1.27-alpine
+    volumes:
+      - ./src:/usr/share/nginx/html:ro
+      - ./docker/web/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "127.0.0.1:${WEB_HOST_PORT:-8080}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    mem_limit: 64m
+    pids_limit: 50
     cap_drop: [ALL]
     security_opt:
       - no-new-privileges:true
